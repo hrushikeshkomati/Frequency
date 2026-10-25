@@ -1,0 +1,1 @@
+Peer-to-peer messaging over Bluetooth LE and local Wi-Fi.

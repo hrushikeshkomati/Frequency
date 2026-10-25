@@ -1,0 +1,10 @@
+Frequency is a native Android peer-to-peer messaging app.
+
+Communicate with nearby peers over Bluetooth LE mesh or discover peers and send
+packets directly over a multicast-capable local Wi-Fi network. Bluetooth LE is
+retained as a fallback when LAN delivery is unavailable.
+
+Frequency is under active development and has not received an independent
+security review. Direct peer messaging over mobile data is not yet implemented.
+Local-network discovery may not work on Wi-Fi networks that block multicast or
+isolate clients.
