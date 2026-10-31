@@ -377,6 +377,13 @@ class ChatViewModel(
     
     // MARK: - Private Chat Management (delegated)
     
+    fun openFrequencyKey(key: String): String? {
+        val hex = com.frequency.android.contacts.FrequencyKeyResolver.normalize(key) ?: return null
+        val peerID = "nostr_${hex.take(16)}"
+        com.frequency.android.nostr.GeohashAliasRegistry.put(peerID, hex)
+        return peerID
+    }
+
     fun startPrivateChat(peerID: String) {
         // For geohash conversation keys, ensure DM subscription is active
         if (peerID.startsWith("nostr_")) {

@@ -64,7 +64,7 @@ fun ChatScreen(viewModel: ChatViewModel) {
     var showPasswordPrompt by remember { mutableStateOf(false) }
     var showPasswordDialog by remember { mutableStateOf(false) }
     var passwordInput by remember { mutableStateOf("") }
-    var showLocationChannelsSheet by remember { mutableStateOf(false) }
+    var showUsernameContactsSheet by remember { mutableStateOf(false) }
     var showLocationNotesSheet by remember { mutableStateOf(false) }
     var showUserSheet by remember { mutableStateOf(false) }
     var selectedUserForSheet by remember { mutableStateOf("") }
@@ -251,7 +251,7 @@ fun ChatScreen(viewModel: ChatViewModel) {
             onSidebarToggle = { viewModel.showMeshPeerList() },
             onShowAppInfo = { viewModel.showAppInfo() },
             onPanicClear = { viewModel.panicClearAllData() },
-            onLocationChannelsClick = { showLocationChannelsSheet = true },
+            onLocationChannelsClick = { showUsernameContactsSheet = true },
             onLocationNotesClick = { showLocationNotesSheet = true }
         )
 
@@ -325,8 +325,8 @@ fun ChatScreen(viewModel: ChatViewModel) {
         },
         showAppInfo = showAppInfo,
         onAppInfoDismiss = { viewModel.hideAppInfo() },
-        showLocationChannelsSheet = showLocationChannelsSheet,
-        onLocationChannelsSheetDismiss = { showLocationChannelsSheet = false },
+        showUsernameContactsSheet = showUsernameContactsSheet,
+        onUsernameContactsSheetDismiss = { showUsernameContactsSheet = false },
         showLocationNotesSheet = showLocationNotesSheet,
         onLocationNotesSheetDismiss = { showLocationNotesSheet = false },
         showUserSheet = showUserSheet,
@@ -474,8 +474,8 @@ private fun ChatDialogs(
     onPasswordDismiss: () -> Unit,
     showAppInfo: Boolean,
     onAppInfoDismiss: () -> Unit,
-    showLocationChannelsSheet: Boolean,
-    onLocationChannelsSheetDismiss: () -> Unit,
+    showUsernameContactsSheet: Boolean,
+    onUsernameContactsSheetDismiss: () -> Unit,
     showLocationNotesSheet: Boolean,
     onLocationNotesSheetDismiss: () -> Unit,
     showUserSheet: Boolean,
@@ -517,14 +517,12 @@ private fun ChatDialogs(
         )
     }
     
-    // Location channels sheet
-    if (showLocationChannelsSheet) {
-        LocationChannelsSheet(
-            isPresented = showLocationChannelsSheet,
-            onDismiss = onLocationChannelsSheetDismiss,
-            viewModel = viewModel
-        )
-    }
+    // Username/key contacts replace location-channel discovery.
+    UsernameContactsSheet(
+        isPresented = showUsernameContactsSheet,
+        onDismiss = onUsernameContactsSheetDismiss,
+        viewModel = viewModel
+    )
     
     // Location notes sheet (extracted to separate presenter)
     if (showLocationNotesSheet) {

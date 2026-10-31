@@ -461,51 +461,12 @@ private fun LocationChannelsButton(
     viewModel: ChatViewModel,
     onClick: () -> Unit
 ) {
-    val colorScheme = MaterialTheme.colorScheme
-    
-    // Get current channel selection from location manager
-    val selectedChannel by viewModel.selectedLocationChannel.collectAsStateWithLifecycle()
-    val teleported by viewModel.isTeleported.collectAsStateWithLifecycle()
-    
-    val (badgeText, badgeColor) = when (selectedChannel) {
-        is com.frequency.android.geohash.ChannelID.Mesh -> {
-            "#mesh" to Color(0xFF007AFF) // iOS blue for mesh
-        }
-        is com.frequency.android.geohash.ChannelID.Location -> {
-            val geohash = (selectedChannel as com.frequency.android.geohash.ChannelID.Location).channel.geohash
-            "#$geohash" to Color(0xFF00C851) // Green for location
-        }
-        null -> "#mesh" to Color(0xFF007AFF) // Default to mesh
-    }
-    
-    Button(
-        onClick = onClick,
-        colors = ButtonDefaults.buttonColors(
-            containerColor = Color.Transparent,
-            contentColor = badgeColor
-        ),
-        contentPadding = PaddingValues(start = 4.dp, end = 0.dp, top = 2.dp, bottom = 2.dp)
-    ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(
-                text = badgeText,
-                style = MaterialTheme.typography.bodyMedium.copy(
-                    fontFamily = FontFamily.Monospace
-                ),
-                color = badgeColor,
-                maxLines = 1
-            )
-            
-            // Teleportation indicator (like iOS)
-            if (teleported) {
-                Spacer(modifier = Modifier.width(2.dp))
-                Icon(
-                    imageVector = Icons.Default.PinDrop,
-                    contentDescription = stringResource(R.string.cd_teleported),
-                    modifier = Modifier.size(12.dp),
-                    tint = badgeColor
-                )
-            }
-        }
+    IconButton(onClick = onClick, modifier = Modifier.size(32.dp)) {
+        Icon(
+            imageVector = Icons.Filled.AlternateEmail,
+            contentDescription = "Find a person",
+            modifier = Modifier.size(20.dp),
+            tint = MaterialTheme.colorScheme.primary
+        )
     }
 }

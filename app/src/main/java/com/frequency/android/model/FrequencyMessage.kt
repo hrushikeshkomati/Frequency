@@ -12,6 +12,7 @@ enum class FrequencyMessageType : Parcelable {
     Message,
     Audio,
     Image,
+    Video,
     File
 }
 

@@ -18,28 +18,32 @@ import androidx.compose.ui.platform.LocalView
 
 // Colors that match the iOS frequency theme
 private val DarkColorScheme = darkColorScheme(
-    primary = Color(0xFF39FF14),        // Bright green (terminal-like)
-    onPrimary = Color.Black,
-    secondary = Color(0xFF2ECB10),      // Darker green
-    onSecondary = Color.Black,
-    background = Color.Black,
-    onBackground = Color(0xFF39FF14),   // Green on black
-    surface = Color(0xFF111111),        // Very dark gray
-    onSurface = Color(0xFF39FF14),      // Green text
-    error = Color(0xFFFF5555),          // Red for errors
-    onError = Color.Black
+    primary = Color(0xFF8CA8FF),
+    onPrimary = Color(0xFF12172A),
+    secondary = Color(0xFFFF8066),
+    onSecondary = Color(0xFF24120D),
+    background = Color(0xFF10131A),
+    onBackground = Color(0xFFF4F6FF),
+    surface = Color(0xFF1A1E29),
+    onSurface = Color(0xFFF4F6FF),
+    surfaceVariant = Color(0xFF282D3A),
+    outline = Color(0xFF414858),
+    error = Color(0xFFFF6B6B),
+    onError = Color(0xFF2A0D0D)
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Color(0xFF008000),        // Dark green
+    primary = Color(0xFF4056B4),
     onPrimary = Color.White,
-    secondary = Color(0xFF006600),      // Even darker green
+    secondary = Color(0xFFE85D4A),
     onSecondary = Color.White,
-    background = Color.White,
-    onBackground = Color(0xFF008000),   // Dark green on white
-    surface = Color(0xFFF8F8F8),        // Very light gray
-    onSurface = Color(0xFF008000),      // Dark green text
-    error = Color(0xFFCC0000),          // Dark red for errors
+    background = Color(0xFFF7F8FC),
+    onBackground = Color(0xFF171A22),
+    surface = Color.White,
+    onSurface = Color(0xFF171A22),
+    surfaceVariant = Color(0xFFE9ECF7),
+    outline = Color(0xFFBBC1D2),
+    error = Color(0xFFB42318),
     onError = Color.White
 )
 

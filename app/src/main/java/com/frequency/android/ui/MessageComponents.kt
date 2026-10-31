@@ -244,6 +244,24 @@ fun MessageItem(
         return
     }
 
+    // Video special rendering
+    if (message.type == FrequencyMessageType.Video) {
+        Column(modifier = modifier.fillMaxWidth()) {
+            Text(
+                text = formatMessageHeaderAnnotatedString(
+                    message = message,
+                    currentUserNickname = currentUserNickname,
+                    meshService = meshService,
+                    colorScheme = colorScheme,
+                    timeFormatter = timeFormatter
+                ),
+                color = colorScheme.onSurface
+            )
+            com.frequency.android.ui.media.VideoMessageItem(path = message.content.trim())
+        }
+        return
+    }
+
     // File special rendering
     if (message.type == FrequencyMessageType.File) {
         val path = message.content.trim()

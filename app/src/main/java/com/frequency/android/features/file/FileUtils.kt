@@ -270,6 +270,7 @@ object FileUtils {
         return when {
             lower.startsWith("image/") -> com.frequency.android.model.FrequencyMessageType.Image
             lower.startsWith("audio/") -> com.frequency.android.model.FrequencyMessageType.Audio
+            lower.startsWith("video/") -> com.frequency.android.model.FrequencyMessageType.Video
             else -> com.frequency.android.model.FrequencyMessageType.File
         }
     }

@@ -149,6 +149,7 @@ class MediaSendingManager(
             val messageType = when {
                 mimeType.lowercase().startsWith("image/") -> FrequencyMessageType.Image
                 mimeType.lowercase().startsWith("audio/") -> FrequencyMessageType.Audio
+                mimeType.lowercase().startsWith("video/") -> FrequencyMessageType.Video
                 else -> FrequencyMessageType.File
             }
 

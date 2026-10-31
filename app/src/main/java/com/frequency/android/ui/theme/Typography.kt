@@ -11,46 +11,11 @@ internal const val BASE_FONT_SIZE = com.frequency.android.util.AppConstants.UI.B
 
 // Typography matching the iOS monospace design - using BASE_FONT_SIZE for consistency
 val Typography = Typography(
-    bodyLarge = TextStyle(
-        fontFamily = FontFamily.Monospace,
-        fontWeight = FontWeight.Normal,
-        fontSize = (BASE_FONT_SIZE + 1).sp,
-        lineHeight = (BASE_FONT_SIZE + 7).sp
-    ),
-    bodyMedium = TextStyle(
-        fontFamily = FontFamily.Monospace,
-        fontWeight = FontWeight.Normal,
-        fontSize = BASE_FONT_SIZE.sp,
-        lineHeight = (BASE_FONT_SIZE + 3).sp
-    ),
-    bodySmall = TextStyle(
-        fontFamily = FontFamily.Monospace,
-        fontWeight = FontWeight.Normal,
-        fontSize = (BASE_FONT_SIZE - 3).sp,
-        lineHeight = (BASE_FONT_SIZE + 1).sp
-    ),
-    headlineSmall = TextStyle(
-        fontFamily = FontFamily.Monospace,
-        fontWeight = FontWeight.Medium,
-        fontSize = (BASE_FONT_SIZE + 3).sp,
-        lineHeight = (BASE_FONT_SIZE + 9).sp
-    ),
-    titleMedium = TextStyle(
-        fontFamily = FontFamily.Monospace,
-        fontWeight = FontWeight.Medium,
-        fontSize = (BASE_FONT_SIZE + 1).sp,
-        lineHeight = (BASE_FONT_SIZE + 7).sp
-    ),
-    labelMedium = TextStyle(
-        fontFamily = FontFamily.Monospace,
-        fontWeight = FontWeight.Medium,
-        fontSize = (BASE_FONT_SIZE - 2).sp,
-        lineHeight = (BASE_FONT_SIZE + 3).sp
-    ),
-    labelSmall = TextStyle(
-        fontFamily = FontFamily.Monospace,
-        fontWeight = FontWeight.Normal,
-        fontSize = (BASE_FONT_SIZE - 4).sp,
-        lineHeight = (BASE_FONT_SIZE + 1).sp
-    )
+    bodyLarge = TextStyle(fontFamily = FontFamily.SansSerif, fontWeight = FontWeight.Normal, fontSize = (BASE_FONT_SIZE + 1).sp, lineHeight = (BASE_FONT_SIZE + 7).sp),
+    bodyMedium = TextStyle(fontFamily = FontFamily.SansSerif, fontWeight = FontWeight.Normal, fontSize = BASE_FONT_SIZE.sp, lineHeight = (BASE_FONT_SIZE + 3).sp),
+    bodySmall = TextStyle(fontFamily = FontFamily.SansSerif, fontWeight = FontWeight.Normal, fontSize = (BASE_FONT_SIZE - 3).sp, lineHeight = (BASE_FONT_SIZE + 1).sp),
+    headlineSmall = TextStyle(fontFamily = FontFamily.SansSerif, fontWeight = FontWeight.Bold, fontSize = (BASE_FONT_SIZE + 6).sp, lineHeight = (BASE_FONT_SIZE + 12).sp),
+    titleMedium = TextStyle(fontFamily = FontFamily.SansSerif, fontWeight = FontWeight.SemiBold, fontSize = (BASE_FONT_SIZE + 2).sp, lineHeight = (BASE_FONT_SIZE + 8).sp),
+    labelMedium = TextStyle(fontFamily = FontFamily.SansSerif, fontWeight = FontWeight.SemiBold, fontSize = (BASE_FONT_SIZE - 2).sp, lineHeight = (BASE_FONT_SIZE + 3).sp),
+    labelSmall = TextStyle(fontFamily = FontFamily.SansSerif, fontWeight = FontWeight.Normal, fontSize = (BASE_FONT_SIZE - 4).sp, lineHeight = (BASE_FONT_SIZE + 1).sp)
 )
