@@ -12,21 +12,7 @@ incrementally.
 > Direct mobile-data peer connectivity is not implemented.
 
 ## Build
-
-Requirements: Android Studio, Android SDK 35, and JDK 17.
-
-From the project root on Windows:
-
-```powershell
-.\gradlew.bat assembleDebug
-```
-
-The debug APK is produced under `app/build/outputs/apk/debug/`. To run unit
-tests:
-
-```powershell
-.\gradlew.bat testDebugUnitTest
-```
+Check out the [Releases](https://github.com/hrushikeshkomati/Frequency/releases) tab.
 
 ## Transports
 
@@ -50,6 +36,4 @@ details, privacy implications, and limitations.
 - [File transfer](./docs/file_transfer.md)
 - [Device management](./docs/device_manager.md)
 
-Frequency builds on ideas and protocol work from the
-[Bitchat Android project](https://github.com/permissionlesstech/bitchat-android).
 See [LICENSE.md](./LICENSE.md) for the license included with this source tree.
