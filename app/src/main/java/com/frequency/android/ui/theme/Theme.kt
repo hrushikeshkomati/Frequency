@@ -18,31 +18,31 @@ import androidx.compose.ui.platform.LocalView
 
 // Colors that match the iOS frequency theme
 private val DarkColorScheme = darkColorScheme(
-    primary = Color(0xFF8CA8FF),
-    onPrimary = Color(0xFF12172A),
-    secondary = Color(0xFFFF8066),
-    onSecondary = Color(0xFF24120D),
-    background = Color(0xFF10131A),
-    onBackground = Color(0xFFF4F6FF),
-    surface = Color(0xFF1A1E29),
-    onSurface = Color(0xFFF4F6FF),
-    surfaceVariant = Color(0xFF282D3A),
-    outline = Color(0xFF414858),
+    primary = Color(0xFF39FF14),
+    onPrimary = Color.Black,
+    secondary = Color(0xFF8CA8FF),
+    onSecondary = Color(0xFF12172A),
+    background = Color(0xFF07110A),
+    onBackground = Color(0xFF39FF14),
+    surface = Color(0xCC102018),
+    onSurface = Color(0xFFE8FFE3),
+    surfaceVariant = Color(0x9917281E),
+    outline = Color(0x6639FF14),
     error = Color(0xFFFF6B6B),
     onError = Color(0xFF2A0D0D)
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Color(0xFF4056B4),
+    primary = Color(0xFF008000),
     onPrimary = Color.White,
-    secondary = Color(0xFFE85D4A),
+    secondary = Color(0xFF4056B4),
     onSecondary = Color.White,
-    background = Color(0xFFF7F8FC),
-    onBackground = Color(0xFF171A22),
-    surface = Color.White,
-    onSurface = Color(0xFF171A22),
-    surfaceVariant = Color(0xFFE9ECF7),
-    outline = Color(0xFFBBC1D2),
+    background = Color(0xFFF4FAF4),
+    onBackground = Color(0xFF102A14),
+    surface = Color(0xE6FFFFFF),
+    onSurface = Color(0xFF102A14),
+    surfaceVariant = Color(0xBBDFF1DF),
+    outline = Color(0x66008000),
     error = Color(0xFFB42318),
     onError = Color.White
 )

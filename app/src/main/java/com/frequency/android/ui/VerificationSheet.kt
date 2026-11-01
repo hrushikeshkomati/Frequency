@@ -180,7 +180,13 @@ fun VerificationSheet(
                         accent = accent,
                         onScan = { code ->
                             val qr = VerificationService.verifyScannedQR(code)
-                            if (qr != null && viewModel.beginQRVerification(qr)) {
+                            val contactKey = qr?.npub ?: VerificationService.extractContactKey(code)
+                            if (contactKey != null) {
+                                viewModel.openFrequencyKey(contactKey)?.let { peerId ->
+                                    viewModel.startPrivateChat(peerId)
+                                }
+                                selectedTab = 0
+                            } else if (qr != null && viewModel.beginQRVerification(qr)) {
                                 selectedTab = 0
                             }
                         }

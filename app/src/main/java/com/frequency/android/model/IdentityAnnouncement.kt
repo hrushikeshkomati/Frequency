@@ -12,7 +12,8 @@ import com.frequency.android.util.*
 data class IdentityAnnouncement(
     val nickname: String,
     val noisePublicKey: ByteArray,    // Noise static public key (Curve25519.KeyAgreement)
-    val signingPublicKey: ByteArray   // Ed25519 public key for signing
+    val signingPublicKey: ByteArray,  // Ed25519 public key for signing
+    val frequencyKey: String? = null
 ) : Parcelable {
 
     /**
@@ -21,7 +22,8 @@ data class IdentityAnnouncement(
     private enum class TLVType(val value: UByte) {
         NICKNAME(0x01u),
         NOISE_PUBLIC_KEY(0x02u),
-        SIGNING_PUBLIC_KEY(0x03u);  // NEW: Ed25519 signing public key
+        SIGNING_PUBLIC_KEY(0x03u),  // NEW: Ed25519 signing public key
+        FREQUENCY_KEY(0x04u);
         
         companion object {
             fun fromValue(value: UByte): TLVType? {
@@ -57,6 +59,15 @@ data class IdentityAnnouncement(
         result.add(TLVType.SIGNING_PUBLIC_KEY.value.toByte())
         result.add(signingPublicKey.size.toByte())
         result.addAll(signingPublicKey.toList())
+
+        frequencyKey?.let { key ->
+            val keyData = key.toByteArray(Charsets.UTF_8)
+            if (keyData.size <= 255) {
+                result.add(TLVType.FREQUENCY_KEY.value.toByte())
+                result.add(keyData.size.toByte())
+                result.addAll(keyData.toList())
+            }
+        }
         
         return result.toByteArray()
     }
@@ -73,6 +84,7 @@ data class IdentityAnnouncement(
             var nickname: String? = null
             var noisePublicKey: ByteArray? = null
             var signingPublicKey: ByteArray? = null
+            var frequencyKey: String? = null
             
             while (offset + 2 <= dataCopy.size) {
                 // Read TLV type
@@ -102,6 +114,7 @@ data class IdentityAnnouncement(
                     TLVType.SIGNING_PUBLIC_KEY -> {
                         signingPublicKey = value
                     }
+                    TLVType.FREQUENCY_KEY -> frequencyKey = String(value, Charsets.UTF_8)
                     null -> {
                         // Unknown TLV; skip (tolerant decoder for forward compatibility)
                         continue
@@ -111,7 +124,7 @@ data class IdentityAnnouncement(
             
             // All three fields are required
             return if (nickname != null && noisePublicKey != null && signingPublicKey != null) {
-                IdentityAnnouncement(nickname, noisePublicKey, signingPublicKey)
+                IdentityAnnouncement(nickname, noisePublicKey, signingPublicKey, frequencyKey)
             } else {
                 null
             }

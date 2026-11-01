@@ -268,6 +268,14 @@ class MessageHandler(private val myPeerID: String, private val appContext: andro
         val nickname = announcement.nickname
         val noisePublicKey = announcement.noisePublicKey
         val signingPublicKey = announcement.signingPublicKey
+        announcement.frequencyKey?.let { frequencyKey ->
+            val hex = com.frequency.android.contacts.FrequencyKeyResolver.normalize(frequencyKey)
+            if (hex != null) {
+                val alias = "nostr_${hex.take(16)}"
+                com.frequency.android.nostr.GeohashAliasRegistry.put(alias, hex)
+                com.frequency.android.favorites.FavoritesPersistenceService.shared.updateNostrPublicKeyForPeerID(peerID, frequencyKey)
+            }
+        }
         
         // Update peer info with verification status through new method
         val isFirstAnnounce = delegate?.updatePeerInfo(

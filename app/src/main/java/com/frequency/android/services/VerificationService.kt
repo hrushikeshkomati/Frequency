@@ -20,6 +20,18 @@ object VerificationService {
 
     private var encryptionServiceRef: WeakReference<EncryptionService>? = null
 
+    fun extractContactKey(raw: String): String? {
+        val value = raw.trim()
+        if (com.frequency.android.contacts.FrequencyKeyResolver.normalize(value) != null) return value
+        return runCatching {
+            val uri = value.toUri()
+            uri.getQueryParameter("npub")
+                ?: uri.getQueryParameter("key")
+        }.getOrNull()?.takeIf {
+            com.frequency.android.contacts.FrequencyKeyResolver.normalize(it) != null
+        }
+    }
+
     fun configure(encryptionService: EncryptionService) {
         this.encryptionServiceRef = WeakReference(encryptionService)
     }

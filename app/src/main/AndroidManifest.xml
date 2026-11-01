@@ -102,6 +102,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="frequency" android:host="verify" />
+                <data android:scheme="frequency" android:host="contact" />
             </intent-filter>
         </activity>
 

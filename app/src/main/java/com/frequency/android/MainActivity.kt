@@ -814,12 +814,18 @@ class MainActivity : OrientationAwareActivity() {
 
     private fun handleVerificationIntent(intent: Intent) {
         val uri = intent.data ?: return
-        if (uri.scheme != "frequency" || uri.host != "verify") return
-
-        chatViewModel.showVerificationSheet()
-        val qr = VerificationService.verifyScannedQR(uri.toString())
-        if (qr != null) {
-            chatViewModel.beginQRVerification(qr)
+        if (uri.scheme != "frequency") return
+        when (uri.host) {
+            "verify" -> {
+                chatViewModel.showVerificationSheet()
+                val qr = VerificationService.verifyScannedQR(uri.toString())
+                if (qr != null) chatViewModel.beginQRVerification(qr)
+            }
+            "contact" -> {
+                val key = uri.getQueryParameter("key") ?: VerificationService.extractContactKey(uri.toString())
+                val peerId = key?.let(chatViewModel::openFrequencyKey)
+                if (peerId != null) chatViewModel.startPrivateChat(peerId)
+            }
         }
     }
 

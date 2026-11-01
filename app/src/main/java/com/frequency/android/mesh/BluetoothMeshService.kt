@@ -1045,7 +1045,10 @@ class BluetoothMeshService(private val context: Context) {
             }
             
             // Create iOS-compatible IdentityAnnouncement with TLV encoding
-            val announcement = IdentityAnnouncement(nickname, staticKey, signingKey)
+            val frequencyKey = try {
+                com.frequency.android.nostr.NostrIdentityBridge.getCurrentNostrIdentity(context)?.npub
+            } catch (_: Exception) { null }
+            val announcement = IdentityAnnouncement(nickname, staticKey, signingKey, frequencyKey)
             var tlvPayload = announcement.encode()
             if (tlvPayload == null) {
                 Log.e(TAG, "Failed to encode announcement as TLV")
@@ -1108,7 +1111,10 @@ class BluetoothMeshService(private val context: Context) {
         }
         
         // Create iOS-compatible IdentityAnnouncement with TLV encoding
-        val announcement = IdentityAnnouncement(nickname, staticKey, signingKey)
+        val frequencyKey = try {
+            com.frequency.android.nostr.NostrIdentityBridge.getCurrentNostrIdentity(context)?.npub
+        } catch (_: Exception) { null }
+        val announcement = IdentityAnnouncement(nickname, staticKey, signingKey, frequencyKey)
         var tlvPayload = announcement.encode()
         if (tlvPayload == null) {
             Log.e(TAG, "Failed to encode peer announcement as TLV")
